@@ -5,7 +5,7 @@
   stage('SonarQube Analysis') {
     def scannerHome = tool 'sonarqube';
     withSonarQubeEnv() {
-      sh "${scannerHome}/bin/sonar-scanner  -Dsonar.projectKey=webapp -Dsonar.sources=. "
+      sh "${scannerHome}/bin/sonar-scanner  -Dsonar.projectKey=dev -Dsonar.sources=. "
     }
   }
 }
