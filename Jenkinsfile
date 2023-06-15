@@ -13,7 +13,7 @@ pipeline {
     
     stage('SonarQube Analysis') {
       agent {
-        label 'Built-In Node'
+        label 'Master'
       }
       steps {
         script {
