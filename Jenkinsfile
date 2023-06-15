@@ -26,7 +26,7 @@ pipeline {
     }
   stage('Deploy') {
     agent {
-        label 'test'
+        label 'abhi2'
       }
           steps {
             script {
