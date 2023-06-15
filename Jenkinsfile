@@ -16,9 +16,10 @@ pipeline {
         label 'Master'
       }
       steps {
-        def scannerHome = tool 'sonarqube';
-        withSonarQubeEnv() {
-         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=demo -Dsonar.sources=."
+        script {
+          def scannerHome = tool 'sonarqube'
+          withSonarQubeEnv() {
+            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=webapp -Dsonar.sources=."
           }
         }
       }
@@ -60,4 +61,6 @@ pipeline {
           }
         }
       }
+
+}  
 
