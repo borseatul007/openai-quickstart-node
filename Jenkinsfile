@@ -32,7 +32,7 @@ pipeline {
             
             sh 'sudo apt-get update'
             sh 'sudo apt-get install -y nodejs'
-            sh 'sudo apt install npm'
+            sh 'sudo apt install npm -y'
 
             sh 'sudo npm install -g pm2 || npm install -g pm2@latest' // Install PM2 globally, try latest version if not found
 
