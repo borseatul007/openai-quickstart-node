@@ -34,10 +34,10 @@
   }
 }
 
-node {
+node('master') {
   stage('SonarQube Analysis') {
-    def scannerHome = tool 'sonarqube'
-    withSonarQubeEnv() {
+    withSonarQubeEnv('SonarQube') {
+      def scannerHome = tool 'sonarqube'
       sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=webapp -Dsonar.sources=."
     }
   }
