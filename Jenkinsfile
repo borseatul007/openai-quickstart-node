@@ -10,9 +10,9 @@
     }
     
     stage('SonarQube Analysis') {
-      //agent {
-        //label 'Built-In Node'
-      //}
+      agent {
+        label 'master'
+      }
       steps {
         script {
           def scannerHome = tool 'sonarqube'
