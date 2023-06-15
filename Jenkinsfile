@@ -1,14 +1,31 @@
- node('abhi2'){
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
-    def scannerHome = tool 'sonarqube';
-    withSonarQubeEnv() {
-      sh "${scannerHome}/bin/sonar-scanner  -Dsonar.projectKey=webapp -Dsonar.sources=. "
+ pipeline {
+  agent none
+  
+  stages {
+    stage('SCM') {
+      agent any
+      steps {
+        checkout scm
+      }
     }
-  }
+    
+    stage('SonarQube Analysis') {
+      agent {
+        label 'Built-In Node'
+      }
+      steps {
+        script {
+          def scannerHome = tool 'sonarqube'
+          withSonarQubeEnv() {
+            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=webapp -Dsonar.sources=."
+          }
+        }
+      }
+    }
   stage('Deploy') {
+    agent {
+        label 'abhi2'
+      }
           steps {
             script {
               def nodejsInstalled = sh(returnStdout: true, script: 'which node').trim()
@@ -42,3 +59,5 @@
           }
         }
       }
+
+}
