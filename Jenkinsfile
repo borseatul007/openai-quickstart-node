@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('SCM') {
       agent {
-        lable 'abhi2'
+        label 'abhi2'
       }
       steps {
         checkout scm
