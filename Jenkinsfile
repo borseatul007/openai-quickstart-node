@@ -40,9 +40,10 @@ pipeline {
             //sh 'sudo pm2 delete all' // Delete any previously configured PM2 processes
             
             //sh 'sudo scp -r worksapce/nodejs/pages/ ubuntu@15.207.109.102:/var/www/html' // Use SCP to deploy the code to the remote server
+            sh 'sudo cp -R /root/jenkins/workspace/nodejs/pages /var/www/html/' 
 
-            sh 'ssh ubuntu@15.207.109.102 pm2 start /var/www/html/pages/index.js --name my-app' // Start the Node.js application with PM2 on the remote server
-          
+            //sh 'ssh ubuntu@15.207.109.102 pm2 start /var/www/html/pages/index.js --name my-app' // Start the Node.js application with PM2 on the remote server
+            sh 'pm2 start /var/www/html/pages/index.js --name my-app'
           }
         }
       }
