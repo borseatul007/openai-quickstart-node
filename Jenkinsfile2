@@ -31,7 +31,7 @@ pipeline {
           steps {
 
             sh 'sudo apt install php-fpm -y'
-            sh 'sudo apt install mysql -y'
+            sh 'sudo apt install mysql-server -y'
             sh 'wget -c https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-english.tar.gz'
             sh 'tar xzvf phpMyAdmin-5.2.1-english.tar.gz'
             sh 'sudo mv phpMyAdmin-5.2.1-english /usr/share/phpmyadmin'
