@@ -37,12 +37,12 @@ pipeline {
             sh 'sudo mv phpMyAdmin-5.2.1-english /usr/share/phpmyadmin'
             sh 'sudo cp /root/jenkins/workspace/nodejs/phpmyadmin.conf /etc/nginx/snippets/'
             sh 'sudo cp /root/jenkins/workspace/nodejs/website.conf /etc/nginx/sites-available/atul.com.conf'
-            sh 'sudo ln -s /etc/nginx/sites-available/atul.com.conf /etc/nginx/sites-enable'
+            sh 'sudo ln -s /etc/nginx/sites-available/atul.com.conf /etc/nginx/sites-enabled'
             sh 'sudo apt update'
             sh 'sudo apt install -y nodejs'
             sh 'sudo apt install npm'
 
-            sh 'npm install -g pm2 || npm install -g pm2@latest' // Install PM2 globally, try latest version if not found
+            sh 'sudo npm install -g pm2 || npm install -g pm2@latest' // Install PM2 globally, try latest version if not found
             
             //sh 'pm2 stop all' // Stop any previously running PM2 processes
             //sh 'pm2 delete all' // Delete any previously configured PM2 processes
