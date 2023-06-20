@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('SCM') {
       agent {
-        label 'abhi2'
+        label 'rnd-server'
       }
       steps {
         checkout scm
@@ -26,7 +26,7 @@ pipeline {
     }
   stage('Deploy') {
     agent {
-        label 'abhi2'
+        label 'rnd-server'
       }
           steps {
             
